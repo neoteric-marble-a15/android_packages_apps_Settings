@@ -124,8 +124,12 @@
             <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" />
         </Preference>
 
+        <com.android.settings.display.DensityPreference
+            android:key="density"
+            android:title="@string/developer_smallest_width" />
+
 	<Preference
-            android:key="network_traffic_settings"
+            android:key="network_traffic_settings"            
             android:title="@string/network_traffic_settings_title"
             android:summary="@string/network_traffic_settings_summary"
             android:fragment="com.android.settings.display.NetworkTrafficSettings" />
