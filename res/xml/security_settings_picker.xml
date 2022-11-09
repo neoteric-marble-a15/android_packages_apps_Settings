@@ -67,6 +67,12 @@
         android:title="@string/biometrics_unlock_skip_biometrics"
         android:persistent="false"/>
 
+    <org.neoteric.preference.SystemSettingSwitchPreference
+        android:key="lockscreen_enable_power_menu"
+        android:title="@string/lockscreen_enable_power_menu_title"
+        android:summary="@string/lockscreen_enable_power_menu_summary"
+        android:defaultValue="true" />
+
     <com.android.settingslib.widget.FooterPreference
             android:key="lock_settings_footer"
             android:selectable="false"
