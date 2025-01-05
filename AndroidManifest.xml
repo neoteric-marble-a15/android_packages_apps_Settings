@@ -4915,7 +4915,8 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
 
         <service
             android:name=".SettingsDumpService"
-            android:exported="true"
+            android:enabled="false"
+            android:exported="false"
             android:permission="android.permission.DUMP" />
 
         <!-- Quick Settings tiles for Developer Options -->
