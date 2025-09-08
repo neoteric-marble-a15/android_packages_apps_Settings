@@ -213,6 +213,13 @@
         android:title="@string/touch_sounds_title"
         android:order="-30"/>
 
+    <!-- Screenshot sound -->
+    <org.neoteric.preference.SystemSettingSwitchPreference
+        android:key="screenshot_shutter_sound"
+        android:title="@string/screenshot_shutter_sound_title"
+        android:defaultValue="1" 
+        android:order="-28" />
+
     <!-- Show vibrate icon in status bar -->
     <SwitchPreferenceCompat
         android:key="vibrate_icon"
@@ -224,7 +231,8 @@
         android:key="incall_feeedback_vibrate"
         android:title="@string/incall_feeedback_vibrate_title"
         android:defaultValue="false"
-        settings:controller="com.android.settings.sound.IncallFeedbackPreferenceController" />
+        settings:controller="com.android.settings.sound.IncallFeedbackPreferenceController"
+        android:order="-25" />
 
     <!-- Dock speaker plays -->
     <DropDownPreference
