@@ -114,8 +114,6 @@
     <string name="network_traffic_units_bytes">Bytes per second (B/s)</string>
     <string name="network_traffic_units_kilobytes">Kilobytes per second (kB/s)</string>
     <string name="network_traffic_units_megabytes">Megabytes per second (MB/s)</string>
-    <string name="network_traffic_hidearrow">Hide arrows</string>
-    <string name="network_traffic_hidearrow_summary">Hide the network traffic indicator arrows</string>
 
     <!-- Units -->
     <string name="unit_seconds">sec</string>

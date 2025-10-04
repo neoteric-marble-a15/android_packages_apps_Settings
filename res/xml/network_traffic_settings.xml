@@ -66,11 +66,4 @@
         android:summary="%s"
         android:dependency="network_traffic_enabled"
         android:defaultValue="1" />
-
-    <org.neoteric.preference.SystemSettingSwitchPreference
-        android:key="network_traffic_hidearrow"
-        android:title="@string/network_traffic_hidearrow"
-        android:summary="@string/network_traffic_hidearrow_summary"
-        android:dependency="network_traffic_enabled"
-        android:defaultValue="false" />
 </PreferenceScreen>
