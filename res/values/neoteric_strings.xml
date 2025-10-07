@@ -117,10 +117,6 @@
     <string name="unit_seconds">sec</string>
     <string name="unit_ms">ms</string>
 
-    <!-- Data disabled icon -->
-    <string name="data_disabled_icon_title">Data disabled icon</string>
-    <string name="data_disabled_icon_summary">Display the cross sign next to signal bar when data is disabled</string>
-
     <!-- Edge light -->
     <string name="edge_light_title">Edge light</string>
     <string name="enable_edge_light">Enable edge light</string>
@@ -262,7 +258,7 @@
     <string name="proximity_wake_summary">Check the proximity sensor prior to waking up screen</string>
 
     <!-- Display settings screen, color balance category title [CHAR LIMIT=30] -->
-    <string name="color_mode_balance_category">Color balance</string>
+    <string name="color_mode_advanced_category">Advanced controls</string>
     <!-- Display settings screen, red color balance setting slider [CHAR LIMIT=NONE] -->
     <string name="color_mode_balance_red">Red strength</string>
     <!-- Display settings screen, green color balance setting slider [CHAR LIMIT=NONE] -->
@@ -270,6 +266,16 @@
     <!-- Display settings screen, blue color balance setting slider [CHAR LIMIT=NONE] -->
     <string name="color_mode_balance_blue">Blue strength</string>
     <string name="keywords_color_balance">color, color balance, color correction, red, green, blue, LiveDisplay</string>
+
+    <!-- Color temperature -->
+    <string name="color_temperature_title">Color temperature</string>
+    <string name="color_temperature_start_label">Warm</string>
+    <string name="color_temperature_end_label">Cool</string>
+    <string name="keywords_color_temperature">color, color temperature, warm, cool, LiveDisplay</string>
+
+    <!-- Color saturation -->
+    <string name="color_saturation_title">Saturation</string>
+    <string name="keywords_color_saturation">color, color temperature, warm, cool, LiveDisplay</string>
 
     <!-- Navbar options -->
     <string name="navbar_category">Navigation bar</string>
@@ -450,4 +456,61 @@
     <!-- Keybox Data -->
     <string name="keybox_data_title">Select keybox XML to spoof</string>
     <string name="keybox_data_summary">Select keybox XML used for key attestation spoofing for all apps system wide. Click the delete button in order to reset the keybox data values used by the system.</string>
+
+    <!-- Title for Neoteric OS preference in Android Version -->
+    <string name="neoteric_os_title">Neoteric OS | Marble Edition</string>
+
+    <!-- Battery info -->
+    <string name="battery_technology">Technology</string>
+    <string name="battery_technology_not_available" translatable="false">@string/battery_cycle_count_not_available</string>
+    <string name="battery_health">Health</string>
+    <string name="battery_health_good">Good</string>
+    <string name="battery_health_overheat">Overheat</string>
+    <string name="battery_health_dead">Dead</string>
+    <string name="battery_health_over_voltage">Over voltage</string>
+    <string name="battery_health_unspecified_failure">Unspecified failure</string>
+    <string name="battery_health_cold">Cold</string>
+    <string name="battery_health_unknown">Unknown</string>
+    <string name="battery_temperature">Temperature</string>
+    <string name="battery_temperature_not_available" translatable="false">@string/battery_cycle_count_not_available</string>
+    <string name="battery_voltage">Voltage</string>
+    <string name="battery_voltage_not_available" translatable="false">@string/battery_cycle_count_not_available</string>
+    <string name="battery_design_capacity">Design capacity</string>
+    <string name="battery_design_capacity_not_available" translatable="false">@string/battery_cycle_count_not_available</string>
+    <string name="battery_design_capacity_summary">%1$d mAh</string>
+    <string name="battery_maximum_capacity">Maximum capacity</string>
+    <string name="battery_maximum_capacity_summary">%1$d mAh (%2$d%%)</string>
+    <string name="battery_maximum_capacity_not_available" translatable="false">@string/battery_cycle_count_not_available</string>
+    <string name="battery_charge_counter_summary">%1$d mAh</string>
+
+    <!-- Radio Info -->
+    <string name="radio_info_title">Radio info</string>
+
+    <!-- WiFi hotspot manager-->
+    <string name="wifi_hotspot_client_manager_title">Connected devices</string>
+    <string name="wifi_hotspot_client_manager_summary">List and manage devices connected to the hotspot</string>
+    <string name="wifi_hotspot_client_manager_list_only_summary">List devices connected to the hotspot</string>
+    <string name="wifi_hotspot_client_limit_title">Limit of connected devices</string>
+    <string name="wifi_hotspot_blocked_clients_list_title">Blocked Devices</string>
+    <string name="wifi_hotspot_connected_clients_list_title">Connected Devices</string>
+    <string name="wifi_hotspot_block_client_dialog_title">Block device</string>
+    <string name="wifi_hotspot_block_client_dialog_text">This action will disconnect \"<xliff:g id="device_name">%1$s</xliff:g>\" from this device and add it to blocklist</string>
+    <string name="wifi_hotspot_unblock_client_dialog_title">Unblock device</string>
+    <string name="wifi_hotspot_unblock_client_dialog_text">The device \"<xliff:g id="device_name">%1$s</xliff:g>\" will be able to connect to this hotspot</string>
+    <string name="wifi_hotspot_client_manager_footer_text">No clients are currently available. Connected and blocked devices will be listed here when available.</string>
+    <plurals name="wifi_hotspot_client_limit_summary">
+        <item quantity="other">Up to <xliff:g id="device_num">%1$d</xliff:g> devices can connect to this hotspot</item>
+        <item quantity="one">Up to <xliff:g id="device_num">%1$d</xliff:g> device can connect to this hotspot</item>
+    </plurals>
+    <string name="wifi_hotspot_hidden_ssid_title">Hidden network</string>
+    <string name="wifi_hotspot_hidden_ssid_summary">Your mobile hotspot\'s name won\'t appear in the list of available WLAN networks.</string>    
+
+    <!-- Notification sound while screen on -->
+    <string name="notification_sound_vib_screen_on_title">Annoying notifications</string>
+    <string name="notification_sound_vib_screen_on_summary">Allow notification sound and vibration alerts when the screen is on</string>  
+
+    <!-- GMS cert chain -->
+    <string name="gms_cert_chain_title">Disable forcing strong integrity</string>
+    <string name="gms_cert_chain_summary">By default we allow forcing strong integrity with any keybox and a valid PIF but this breaks apps like Google Pay, this setting allows to disable this option in order to fix it on such apps.</string>
+
 </resources>

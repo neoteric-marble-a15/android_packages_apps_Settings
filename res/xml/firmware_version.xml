@@ -30,6 +30,15 @@
         settings:searchable="false"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
 
+    <!-- Neoteric version -->
+    <Preference
+        android:key="neoteric_os"
+        android:title="@string/neoteric_os_title"
+        android:summary="@string/summary_placeholder"
+        settings:enableCopying="true"
+        settings:searchable="false"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.NeotericAndroidVersionPreferenceController"/>
+
     <!-- Security patch -->
     <Preference
         android:key="security_key"

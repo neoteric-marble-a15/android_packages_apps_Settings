@@ -112,6 +112,7 @@ android_library {
         "kotlinx-coroutines-core",
         "kotlinx-coroutines-android",
         "NeotericPreferences",
+        "NeotericFrameworkPreferences",
     ],
 
     plugins: ["androidx.room_room-compiler-plugin"],

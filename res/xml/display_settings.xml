@@ -129,12 +129,6 @@
             android:title="@string/network_traffic_settings_title"
             android:summary="@string/network_traffic_settings_summary"
             android:fragment="com.android.settings.display.NetworkTrafficSettings" />
-
-	<org.neoteric.preference.SystemSettingSwitchPreference
-            android:key="data_disabled_icon"
-            android:title="@string/data_disabled_icon_title"
-            android:summary="@string/data_disabled_icon_summary"
-            android:defaultValue="true" />
     </PreferenceCategory>
 
     <PreferenceCategory

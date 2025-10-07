@@ -149,6 +149,12 @@
         android:summary="@string/keybox_data_summary"
         android:defaultValue=""/>
 
+    <org.neoteric.preference.SecureSettingSwitchPreference
+        android:key="gms_cert_chain"
+        android:title="@string/gms_cert_chain_title"
+        android:summary="@string/gms_cert_chain_summary"
+        android:defaultValue="false" />
+
     <PreferenceCategory
         android:key="advanced_category"
         android:title="@string/advanced_apps"

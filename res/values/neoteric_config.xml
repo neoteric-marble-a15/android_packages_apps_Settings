@@ -21,4 +21,8 @@
     <!-- Power share thresholds -->
     <integer name="config_minPowerShareThreshold">10</integer>
     <integer name="config_maxPowerShareThreshold">50</integer>
+
+    <!-- Battery info -->
+    <bool name="config_show_battery_info" translatable="false">true</bool>
+
 </resources>
