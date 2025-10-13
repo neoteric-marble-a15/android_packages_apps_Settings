@@ -509,8 +509,19 @@
     <string name="notification_sound_vib_screen_on_title">Annoying notifications</string>
     <string name="notification_sound_vib_screen_on_summary">Allow notification sound and vibration alerts when the screen is on</string>  
 
-    <!-- GMS cert chain -->
+    <string name="spoofing_settings_title">Spoofing</string>
+    <string name="spoofing_settings_summary">Alter device properties for specific apps</string>
+
+    <string name="spoof_play_integrity_title">Enable Play Integrity spoof</string>
+    <string name="spoof_play_integrity_summary">Main switch to enable spoofing for Play Integrity checks.</string>
+
     <string name="gms_cert_chain_title">Disable forcing strong integrity</string>
     <string name="gms_cert_chain_summary">By default we allow forcing strong integrity with any keybox and a valid PIF but this breaks apps like Google Pay, this setting allows to disable this option in order to fix it on such apps.</string>
+
+    <string name="spoof_photos_title">Google Photos spoof</string>
+    <string name="spoof_photos_summary">Get unlimited original quality photo storage in Google Photos.</string>
+
+    <string name="spoof_games_title">Game spoofing</string>
+    <string name="spoof_games_summary">Unlock higher graphics or FPS in certain games.</string>
 
 </resources>
