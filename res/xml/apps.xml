@@ -143,42 +143,49 @@
         android:summary="@string/hide_applist_summary"
         android:fragment="com.android.settings.security.HideAppListSettings" />
 
-    <PreferenceCategory
-        android:title="@string/spoofing_settings_title"
-        android:summary="@string/spoofing_settings_summary">
+<PreferenceCategory
+    android:title="@string/spoofing_settings_title">
 
-        <org.neoteric.preference.SecureSettingSwitchPreference
-            android:key="spoof_play_integrity"
-            android:title="@string/spoof_play_integrity_title"
-            android:summary="@string/spoof_play_integrity_summary"
-            android:defaultValue="true" />
+    <SwitchPreference
+        android:key="spoof_play_integrity"
+        android:title="@string/spoof_play_integrity_title"
+        android:summary="@string/spoof_play_integrity_summary"
+        android:defaultValue="true" />
 
-        <com.android.settings.applications.KeyboxDataPreference
-            android:key="keybox_data_setting"
-            android:title="@string/keybox_data_title"
-            android:summary="@string/keybox_data_summary"
-            android:defaultValue=""/>
+     <com.android.settings.applications.PifDataPreference
+        android:key="pif_data_setting"
+        android:title="@string/pif_data_title"
+        android:summary="@string/pif_data_summary"
+        android:dependency="spoof_play_integrity"
+        android:defaultValue=""/> 
 
-        <org.neoteric.preference.SecureSettingSwitchPreference
-            android:key="gms_cert_chain"
-            android:title="@string/gms_cert_chain_title"
-            android:summary="@string/gms_cert_chain_summary"
-            android:dependency="spoof_play_integrity"
-            android:defaultValue="false" />
+    <com.android.settings.applications.KeyboxDataPreference
+        android:key="keybox_data_setting"
+        android:title="@string/keybox_data_title"
+        android:summary="@string/keybox_data_summary"
+        android:dependency="spoof_play_integrity"
+        android:defaultValue=""/>
 
-        <org.neoteric.preference.SecureSettingSwitchPreference
-            android:key="spoof_photos"
-            android:title="@string/spoof_photos_title"
-            android:summary="@string/spoof_photos_summary"
-            android:defaultValue="true" />
+    <SwitchPreference
+        android:key="gms_cert_chain"
+        android:title="@string/gms_cert_chain_title"
+        android:summary="@string/gms_cert_chain_summary"
+        android:dependency="spoof_play_integrity"
+        android:defaultValue="false" />
 
-        <org.neoteric.preference.SecureSettingSwitchPreference
-            android:key="spoof_games"
-            android:title="@string/spoof_games_title"
-            android:summary="@string/spoof_games_summary"
-            android:defaultValue="true" />
+    <org.neoteric.preference.SecureSettingSwitchPreference
+        android:key="spoof_photos"
+        android:title="@string/spoof_photos_title"
+        android:summary="@string/spoof_photos_summary"
+        android:defaultValue="true" />
 
-    </PreferenceCategory>
+    <org.neoteric.preference.SecureSettingSwitchPreference
+        android:key="spoof_games"
+        android:title="@string/spoof_games_title"
+        android:summary="@string/spoof_games_summary"
+        android:defaultValue="true" />
+
+</PreferenceCategory>
 
     <PreferenceCategory
         android:key="advanced_category"

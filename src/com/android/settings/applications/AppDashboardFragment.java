@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,17 +17,21 @@
 package com.android.settings.applications;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.content.Intent;
-import android.provider.SearchIndexableResource;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.SearchIndexableResource;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.preference.Preference;
+import androidx.preference.SwitchPreference;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.settings.R;
@@ -52,11 +56,14 @@ public class AppDashboardFragment extends DashboardFragment {
     private static final String ADVANCED_CATEGORY_KEY = "advanced_category";
     private static final String ASPECT_RATIO_PREF_KEY = "aspect_ratio_apps";
     private static final String KEYBOX_DATA_KEY = "keybox_data_setting";
+    private static final String PIF_DATA_KEY = "pif_data_setting";
+    private static final String APP_LOCK_PREF_KEY = "app_lock";
+
     private ActivityResultLauncher<Intent> mKeyboxFilePickerLauncher;
     private KeyboxDataPreference mKeyboxDataPreference;
     private AppsPreferenceController mAppsPreferenceController;
-
-    private static final String APP_LOCK_PREF_KEY = "app_lock";
+    private ActivityResultLauncher<Intent> mPifFilePickerLauncher;
+    private PifDataPreference mPifDataPreference;
 
     private static List<AbstractPreferenceController> buildPreferenceControllers(Context context,
             Lifecycle lifecycle, AppDashboardFragment host) {
@@ -99,7 +106,7 @@ public class AppDashboardFragment extends DashboardFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         mAppsPreferenceController = use(AppsPreferenceController.class);
-        mAppsPreferenceController.setFragment(this /* fragment */);
+        mAppsPreferenceController.setFragment(this);
         getSettingsLifecycle().addObserver(mAppsPreferenceController);
 
         final HibernatedAppsPreferenceController hibernatedAppsPreferenceController =
@@ -118,15 +125,56 @@ public class AppDashboardFragment extends DashboardFragment {
                 }
             }
         );
+
+        mPifFilePickerLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                    Uri uri = result.getData().getData();
+                    Preference pref = findPreference(PIF_DATA_KEY);
+                    if (pref instanceof PifDataPreference) {
+                        ((PifDataPreference) pref).handleFileSelected(uri);
+                    }
+                }
+            }
+        );
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        final SwitchPreference playIntegrityToggle = findPreference("spoof_play_integrity");
+        if (playIntegrityToggle != null) {
+            playIntegrityToggle.setOnPreferenceChangeListener((preference, newValue) -> {
+                final boolean isEnabled = (Boolean) newValue;
+                Settings.Secure.putInt(getContext().getContentResolver(), "spoof_play_integrity", isEnabled ? 1 : 0);
+                // This call ensures the toggle has the same immediate effect
+                killGoogleAppProcesses();
+                return true;
+            });
+        }
+
+        final SwitchPreference gmsCertChainToggle = findPreference("gms_cert_chain");
+        if (gmsCertChainToggle != null) {
+            gmsCertChainToggle.setChecked(Settings.Secure.getInt(getContext().getContentResolver(), "gms_cert_chain", 0) == 1);
+            gmsCertChainToggle.setOnPreferenceChangeListener((preference, newValue) -> {
+                final boolean isEnabled = (Boolean) newValue;
+                Settings.Secure.putInt(getContext().getContentResolver(), "gms_cert_chain", isEnabled ? 1 : 0);
+                // Also kill processes when this is toggled
+                killGoogleAppProcesses();
+                return true;
+            });
+        }
+
         mKeyboxDataPreference = findPreference(KEYBOX_DATA_KEY);
         if (mKeyboxDataPreference != null) {
             mKeyboxDataPreference.setFilePickerLauncher(mKeyboxFilePickerLauncher);
+        }
+
+        mPifDataPreference = findPreference(PIF_DATA_KEY);
+        if (mPifDataPreference != null) {
+            mPifDataPreference.setFilePickerLauncher(mPifFilePickerLauncher);
         }
     }
 
@@ -137,7 +185,24 @@ public class AppDashboardFragment extends DashboardFragment {
 
     @Override
     protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
-        return buildPreferenceControllers(context, getSettingsLifecycle(), this /* host*/);
+        return buildPreferenceControllers(context, getSettingsLifecycle(), this);
+    }
+
+    /**
+     * Force stops Google Play Services and Play Store to apply spoofing changes immediately.
+     */
+    private void killGoogleAppProcesses() {
+        String[] packages = { "com.google.android.gms", "com.android.vending" };
+        try {
+            ActivityManager am = (ActivityManager) getContext().getSystemService(Context.ACTIVITY_SERVICE);
+            if (am == null) return;
+            for (String pkg : packages) {
+                am.forceStopPackage(pkg);
+                Log.i(TAG, "Force stopped " + pkg + " to apply settings change.");
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to kill Google app processes", e);
+        }
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
@@ -153,8 +218,7 @@ public class AppDashboardFragment extends DashboardFragment {
                 @Override
                 public List<AbstractPreferenceController> createPreferenceControllers(
                         Context context) {
-                    return buildPreferenceControllers(context, null /* lifecycle */,
-                            null /* host*/);
+                    return buildPreferenceControllers(context, null, null);
                 }
             };
 
