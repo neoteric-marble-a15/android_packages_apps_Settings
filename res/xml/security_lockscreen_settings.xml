@@ -93,6 +93,12 @@
             android:title="@string/qs_lock_screen_secure_title"
             android:summary="@string/qs_lock_screen_secure_summary"
             android:defaultValue="true" />
+
+        <org.neoteric.preference.SystemSettingSwitchPreference
+            android:key="ls_media_art_enabled"
+            android:title="@string/media_art_title"
+            android:summary="@string/media_art_summary"
+            android:defaultValue="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
