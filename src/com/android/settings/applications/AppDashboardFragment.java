@@ -143,13 +143,15 @@ public class AppDashboardFragment extends DashboardFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        final Context context = getContext(); // <-- ADDED
 
         final SwitchPreference playIntegrityToggle = findPreference("spoof_play_integrity");
         if (playIntegrityToggle != null) {
+            // V-- THIS IS THE FIX --V
+            playIntegrityToggle.setChecked(Settings.Secure.getInt(context.getContentResolver(), "spoof_play_integrity", 1) == 1);
             playIntegrityToggle.setOnPreferenceChangeListener((preference, newValue) -> {
                 final boolean isEnabled = (Boolean) newValue;
                 Settings.Secure.putInt(getContext().getContentResolver(), "spoof_play_integrity", isEnabled ? 1 : 0);
-                // This call ensures the toggle has the same immediate effect
                 killGoogleAppProcesses();
                 return true;
             });

@@ -1,5 +1,6 @@
 package com.android.settings.applications;
 
+import android.app.ActivityManager; // <-- ADDED
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -64,6 +65,7 @@ public class KeyboxDataPreference extends Preference {
                     Settings.Secure.KEYBOX_DATA, null);
             Toast.makeText(getContext(), "XML data cleared", Toast.LENGTH_SHORT).show();
             callChangeListener(null);
+            killPackages(); // <-- ADDED
         });
     }
 
@@ -94,6 +96,7 @@ public class KeyboxDataPreference extends Preference {
                     Settings.Secure.KEYBOX_DATA, xml);
             Toast.makeText(getContext(), "XML file loaded", Toast.LENGTH_SHORT).show();
             callChangeListener(xml);
+            killPackages(); // <-- ADDED
 
         } catch (IOException e) {
             Log.e(TAG, "Failed to read XML file", e);
@@ -180,5 +183,21 @@ public class KeyboxDataPreference extends Preference {
         return numberOfKeyboxes == 1
                 && hasEcdsaKey && hasEcdsaPrivKey && ecdsaCertCount >= 1
                 && hasRsaKey && hasRsaPrivKey && rsaCertCount >= 1;
+    }
+
+    // <-- ADDED METHOD (Copied from PifDataPreference)
+    private void killPackages() {
+        try {
+            ActivityManager am = (ActivityManager) getContext().getSystemService(Context.ACTIVITY_SERVICE);
+            String[] packages = { "com.google.android.gms", "com.android.vending" };
+            for (String pkg : packages) {
+                am.getClass()
+                  .getMethod("forceStopPackage", String.class)
+                  .invoke(am, pkg);
+                Log.i(TAG, pkg + " process killed");
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to kill packages", e);
+        }
     }
 }
