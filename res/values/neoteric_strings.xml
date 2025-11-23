@@ -533,4 +533,9 @@
     <!-- Screenshot shutter -->
     <string name="screenshot_shutter_sound_title">Screenshot sound</string>
 
+    <!-- ReVanced -->
+    <string name="revan_toggle_title">ReVanced Integration</string>
+    <string name="revan_toggle_summary">Use ReVanced variants of YouTube and YT Music instead of stock apps</string>
+    <string name="revan_restart_to_apply">Restart to apply changes</string>
+
 </resources>

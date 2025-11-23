@@ -88,6 +88,12 @@
         settings:controller="com.android.settings.applications.GameSpaceController">
     </Preference>
 
+    <SwitchPreferenceCompat
+        android:key="persist_revan_mod"
+        android:title="@string/revan_toggle_title"
+        android:summary="@string/revan_toggle_summary"
+        android:defaultValue="true" />
+
     <PreferenceCategory
         android:key="dashboard_tile_placeholder"
         android:order="10"/>
