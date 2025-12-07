@@ -65,6 +65,12 @@
             android:title="@string/hide_navbar_gesture_bar_title"
             android:summary="@string/hide_navbar_gesture_bar_summary"
             android:defaultValue="false" />
+
+        <org.neoteric.preference.SecureSettingSwitchPreference
+            android:key="navbar_ime_space"
+            android:title="@string/show_ime_space_title"
+            android:summary="@string/show_ime_space_summary"
+            android:defaultValue="true" />            
     </PreferenceCategory>
 
     <com.android.settingslib.widget.FooterPreference
