@@ -13,6 +13,12 @@
     <!-- Summary text for screen off UDFPS [CHAR LIMIT=NONE]-->
     <string name="ambient_display_screen_off_udfps_summary">Allows unlocking with the screen off.\nEnabling may cause accidental wake-ups.</string>
 
+    <!-- PIF Properties -->
+    <string name="pif_props_title">Play Integrity fix properties</string>
+    <string name="pif_props_summary">Show all currently set PIF properties</string>
+    <string name="pif_update_title">Update Play Integrity fix</string>
+    <string name="pif_update_summary">Force check for updated PIF. This will remove any manually set PIF.</string>
+
     <!-- Status bar Icon Manager -->
     <string name="icon_manager_title">Icon manager</string>
     <string name="icon_manager_summary">Control visibility of status bar icons</string>
