@@ -118,4 +118,16 @@
         android:fragment="com.android.settings.gestures.PreventRingingGestureSettings"
         settings:controller="com.android.settings.gestures.PreventRingingParentPreferenceController" />
 
+    <PreferenceCategory
+        android:key="status_bar_gestures_category"
+        android:title="@string/status_bar_gestures_category_title">
+
+        <org.neoteric.preference.SystemSettingSwitchPreference
+            android:key="status_bar_brightness_control"
+            android:title="@string/status_bar_brightness_control_title"
+            android:summary="@string/status_bar_brightness_control_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
