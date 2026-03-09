@@ -533,11 +533,6 @@
     <!-- Screenshot shutter -->
     <string name="screenshot_shutter_sound_title">Screenshot sound</string>
 
-    <!-- ReVanced -->
-    <string name="revan_toggle_title">ReVanced Integration</string>
-    <string name="revan_toggle_summary">Use ReVanced variants of YouTube and YT Music instead of stock apps</string>
-    <string name="revan_restart_to_apply">Restart to apply changes</string>
-
     <!-- IME button space -->
     <string name="show_ime_space_title">Show IME button space</string>
     <string name="show_ime_space_summary">Enable the input method quick switch feature to switch input methods or hide the on-screen keyboard from the feature bar at the bottom of the screen when typing</string>
