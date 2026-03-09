@@ -172,16 +172,6 @@
         android:dependency="spoof_play_integrity"
         android:defaultValue=""/>
 
-    <Preference
-        android:key="pif_props"
-        android:title="@string/pif_props_title"
-        android:summary="@string/pif_props_summary"/>
-
-    <Preference
-        android:key="pif_update"
-        android:title="@string/pif_update_title"
-        android:summary="@string/pif_update_summary"/>
-
     <SwitchPreference
         android:key="gms_cert_chain"
         android:title="@string/gms_cert_chain_title"
